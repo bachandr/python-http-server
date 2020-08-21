@@ -1,6 +1,6 @@
 # python-http-server
 
-HTTP server with key value store in python
+Simple HTTP server with key value store in python
 
 Usage:
 ```
