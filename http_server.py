@@ -40,7 +40,7 @@ class ResourceNotFoundError(Exception):
 
 
 class KeyNotFoundError(Exception):
-    """ Base class for resource not found exception. """
+    """ Base class for key not found exception. """
 
     def __init__(self, m):
         self.message = m
