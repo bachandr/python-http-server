@@ -78,7 +78,7 @@ class Handler(BaseHTTPRequestHandler):
         try:
             return key_value_store.__getitem__(key)
         except KeyError as e:
-            raise KeyNotFoundError('Key ' + key + ' not found')
+            raise KeyNotFoundError('Key(%s) Not Found' % key)
 
     @staticmethod
     def _clear(key=None):
@@ -88,7 +88,7 @@ class Handler(BaseHTTPRequestHandler):
             try:
                 key_value_store.pop(key)
             except KeyError as e:
-                raise KeyNotFoundError('Key ' + key + ' not found')
+                raise KeyNotFoundError('Key(%s) Not Found' % key)
 
     def _helper(self, action):
         self._validate_path()
@@ -109,7 +109,7 @@ class Handler(BaseHTTPRequestHandler):
                     self._clear(key)
                 return self._to_json(200, {key: value})
             else:
-                raise ResourceNotFoundError('Path not found ' + self.path)
+                raise ResourceNotFoundError('Resource Not Found: %s' % self.path)
         except ResourceNotFoundError as e:
             return self._to_json(404, {'error': e.message})
         except Exception as e:
@@ -134,7 +134,7 @@ class Handler(BaseHTTPRequestHandler):
                 key_value_store.update({key: value})
                 return self._to_json(200, {key: value})
             else:
-                raise ResourceNotFoundError('Path not found ' + self.path)
+                raise ResourceNotFoundError('Resource Not Found: %s' % self.path)
         except ResourceNotFoundError as e:
             return self._to_json(404, {'error': e.message})
         except Exception as e:
