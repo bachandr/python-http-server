@@ -3,7 +3,7 @@
 HTTP server with key value store in python
 
 Usage::
-    ./http-server.py [<port>]
+    python3 ./http-server.py [<port>]
 
 Send a GET request to retrieve all key value:
     curl -v -XGET http://localhost:{port}/store/key
